@@ -12,6 +12,7 @@ Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/%{name}-%{versi
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-patch
+BuildRequires:	gawk
 BuildRequires:	gtk+-devel
 BuildRequires:	imlib-devel
 BuildRequires:	libjpeg-devel
