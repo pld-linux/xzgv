@@ -9,6 +9,7 @@ Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
 URL:		ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/%{name}-%{version}.tar.gz
+Source1:	%{name}.desktop
 Patch0:		%{name}-patch
 BuildRequires:	gtk+-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -45,10 +46,13 @@ LDFLAGS="-s" ; export LDFLAGS
 
 %install
 rm -fr $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_infodir},%{_mandir}/man1}
+%{__install} -d $RPM_BUILD_ROOT{%{_bindir},%{_infodir},%{_mandir}/man1}
+%{__install} -d $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
 
 %{__make} install PREFIX=$RPM_BUILD_ROOT%{_prefix} \
 	INFODIR=$RPM_BUILD_ROOT%{_infodir}
+
+%{__install} %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_bindir}/*
 
@@ -70,3 +74,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/xzgv
 %{_infodir}/xzgv*.gz
 %{_mandir}/man1/*
+%{_applnkdir}/Graphics/Viewers/*
