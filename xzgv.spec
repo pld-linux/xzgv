@@ -19,8 +19,6 @@ BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 xzgv is a picture viewer for X, with a thumbnail-based file selector.
