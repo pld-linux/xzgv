@@ -4,14 +4,13 @@ Name:		xzgv
 Version:	0.7
 Release:	3
 License:	GPL
-Vendor:		Russell Marks <russell.marks@dtn.ntl.com>
 Group:		X11/Applications/Graphics
-URL:		ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/
-Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/%{name}-%{version}.tar.gz
+Source0:	http://xzgv.browser.org/%{name}-%{version}.tar.gz
 # Source0-md5:	37b5bd8286de9f1047f603879460b364
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-patch
+URL:		http://xzgv.browser.org/
 BuildRequires:	gawk
 BuildRequires:	gtk+-devel
 BuildRequires:	imlib-devel
@@ -19,7 +18,6 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 xzgv is a picture viewer for X, with a thumbnail-based file selector.
