@@ -13,6 +13,10 @@ Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/%{name}-%{versi
 Source1:	%{name}.desktop
 Patch0:		%{name}-patch
 BuildRequires:	gtk+-devel
+BuildRequires:	imlib-devel
+BuildRequires:	libjpeg-devel
+BuildRequires:	libpng-devel
+BuildRequires:	libtiff-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
