@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Przegl±darka xzgv
+Name[pl]=Przegl±darka xzgv
+Comment=Image viever with thumbnails 
+Comment[pl]=Przegl±darka obrazków z obs³ug± thumbnail'i
+Icon=
+Exec=xzgv
+Terminal=0
+Type=Application
+
