@@ -1,14 +1,15 @@
-Summary:	picture viewer for X, with thumbnail-based file selector
-Summary(pl):	Przegl±darka plików graficznych pod X'y z obs³ug± thumbnail'i
+Summary:	Picture viewer for X, with thumbnail-based file selector
+Summary(pl):	Przegl±darka plików graficznych pod X'y z obs³ug± miniatur
 Name:		xzgv
 Version:	0.7
-Release:	2
+Release:	3
 License:	GPL
 Vendor:		Russell Marks <russell.marks@dtn.ntl.com>
 Group:		X11/Applications/Graphics
 URL:		ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
+Source2:	%{name}.png
 Patch0:		%{name}-patch
 BuildRequires:	gtk+-devel
 BuildRequires:	imlib-devel
@@ -29,12 +30,12 @@ For more on how xzgv works and how to use it, do `info xzgv' or `man
 xzgv' once it's installed.
 
 %description -l pl
-xzgv jest przegl±dark± plików graficznych pod X'y z obs³ug±
-thumbnail'i. U¿ywa GTK+ i Imlib'a. Obs³uguje wiêkszo¶æ formatów, a
-thumbnail'e s± kompatybilne z xv, zgv, oraz Gimp. Mo¿e byæ tak¿e
-u¿ywane z `xzgv file(s)', aby efektywnie pomin±æ wbudowany selektor
-plików. Wiêcej informacji jak dzia³aj± te programy i jak ich u¿ywaæ
-uzyskasz ze stron manuali: `info xzgv' oraz `man xzgv'. Oczywi¶cie po
+xzgv jest przegl±dark± plików graficznych pod X'y z obs³ug± miniatur.
+U¿ywa GTK+ i Imliba. Obs³uguje wiêkszo¶æ formatów, a miniatury s±
+zgodne z xv, zgv oraz Gimp. Mo¿e byæ tak¿e u¿ywany jako `xzgv plik(i)'
+w celu efektywnego pomin±æ wbudowany selektor plików. Wiêcej
+informacji jak dzia³a ten program i jak go u¿ywaæ mo¿na znale¼æ na
+stronach podrêcznika: `info xzgv' oraz `man xzgv'. Oczywi¶cie po
 instalacji.
 
 %prep
@@ -45,20 +46,23 @@ instalacji.
 LDFLAGS="%{rpmldflags}" ; export LDFLAGS
 %{__make} OPT="%{rpmcflags}" PREFIX=%{_prefix}
 
-(cd doc; rm -f *.gz; makeinfo xzgv.texi; gzip -9nf xzgv.info*)
+cd doc
+rm -f *.gz
+makeinfo xzgv.texi
+gzip -9nf xzgv.info*
+cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_infodir},%{_mandir}/man1} \
-	$RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
+	$RPM_BUILD_ROOT{%{_applnkdir}/Graphics/Viewers,%{_pixmapsdir}}
 
 %{__make} install \
 	PREFIX=$RPM_BUILD_ROOT%{_prefix} \
 	INFODIR=$RPM_BUILD_ROOT%{_infodir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
-
-gzip -9nf AUTHORS ChangeLog NEWS README TODO
+install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
@@ -71,8 +75,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/xzgv
-%{_infodir}/xzgv*.gz
+%{_infodir}/xzgv*
 %{_mandir}/man1/*
 %{_applnkdir}/Graphics/Viewers/*
+%{_pixmapsdir}/*
