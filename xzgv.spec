@@ -1,7 +1,7 @@
 Summary:	picture viewer for X, with thumbnail-based file selector
 Summary(pl):	Przegl±darka plików graficznych pod X'y z obs³ug± thumbnail'i
 Name:		xzgv
-Version:	0.3
+Version:	0.7
 Release:	1
 License:	GPL
 Vendor:		Russell Marks <russell.marks@dtn.ntl.com>
@@ -9,8 +9,9 @@ Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
 URL:		ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/%{name}-%{version}.tar.gz
-Patch0:		xzgv-config.patch
-Patch1:		xzgv-info.patch
+Patch0:		%{name}-config.patch
+Patch1:		%{name}-info.patch
+Patch2:		%{name}-patch
 BuildRequires:	gtk+-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,8 +37,9 @@ dzia³aj± te programy i jak ich u¿ywaæ uzyskasz ze stron manuali:
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+#%patch0 -p1
+#%patch1 -p1
+%patch2 -p1
 
 %build
 LDFLAGS="-s" ; export LDFLAGS 
