@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Xzgv viewer
+Name[pl]=Przeglądarka xzgv
+Comment=Image viewer with thumbnails
+Comment[pl]=Przeglądarka obrazków z obsługą miniatur
+Icon=xzgv.png
+Exec=xzgv
+Terminal=false
+Type=Application
+Encoding=UTF-8
+# vi: encoding=utf-8
