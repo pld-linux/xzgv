@@ -2,7 +2,7 @@ Summary:	picture viewer for X, with thumbnail-based file selector
 Summary(pl):	Przegl±darka plików graficznych pod X'y z obs³ug± thumbnail'i
 Name:		xzgv
 Version:	0.7
-Release:	1
+Release:	2
 License:	GPL
 Vendor:		Russell Marks <russell.marks@dtn.ntl.com>
 Group:		Applications/Graphics
@@ -19,7 +19,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
-%define		_infodir	/usr/share/info
 
 %description
 xzgv is a picture viewer for X, with a thumbnail-based file selector.
