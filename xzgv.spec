@@ -49,14 +49,14 @@ LDFLAGS="%{rpmldflags}" ; export LDFLAGS
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__install} -d $RPM_BUILD_ROOT{%{_bindir},%{_infodir},%{_mandir}/man1} \
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_infodir},%{_mandir}/man1} \
 	$RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
 
 %{__make} install \
 	PREFIX=$RPM_BUILD_ROOT%{_prefix} \
 	INFODIR=$RPM_BUILD_ROOT%{_infodir}
 
-%{__install} %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
 
 gzip -9nf AUTHORS ChangeLog NEWS README TODO
 
