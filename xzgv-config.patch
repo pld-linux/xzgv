@@ -1,0 +1,21 @@
+diff -ur xzgv-0.3.orif/config.mk xzgv-0.3/config.mk
+--- xzgv-0.3.orif/config.mk	Mon Jan 10 12:26:09 2000
++++ xzgv-0.3/config.mk	Sat May  6 01:15:01 2000
+@@ -7,7 +7,7 @@
+ # This is likely to be what you'll want for most systems:
+ #
+ CC=gcc
+-CFLAGS=-O -Wall
++CFLAGS=$(OPT)
+ 
+ # xzgv can do its `scaling with interpolation' rather faster by taking
+ # advantage of MMX ops in a hotspot. This has no impact on non-MMX
+@@ -17,7 +17,7 @@
+ # (You need gas 2.8.1 or better, and obviously you must be compiling
+ # on an x86! :-) Comment it out if either of those isn't the case...)
+ #
+-CFLAGS+=-DINTERP_MMX
++#CFLAGS+=-DINTERP_MMX
+ 
+ 
+ # --------------------- Installation options ----------------------
