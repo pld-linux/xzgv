@@ -2,7 +2,7 @@ Summary:	Picture viewer for X, with thumbnail-based file selector
 Summary(pl):	Przegl±darka plików graficznych pod X Window System z obs³ug± miniatur
 Name:		xzgv
 Version:	0.8
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://xzgv.browser.org/%{name}-%{version}.tar.gz
@@ -10,6 +10,8 @@ Source0:	http://xzgv.browser.org/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-patch
+# http://rus.members.beeb.net/xzgv-0.8-integer-overflow-fix.diff
+Patch1:		%{name}-CAN-2004-0994.patch
 URL:		http://xzgv.browser.org/
 BuildRequires:	gawk
 BuildRequires:	gtk+-devel
