@@ -8,5 +8,5 @@ Exec=xzgv
 Terminal=false
 Type=Application
 Encoding=UTF-8
-Categories=Graphics;Viewer;
+Categories=GTK;Graphics;Viewer;
 # vi: encoding=utf-8
