@@ -6,8 +6,6 @@ Release:	1
 License:	GPL
 Vendor:		Russell Marks <russell.marks@dtn.ntl.com>
 Group:		Applications/Graphics
-Group(de):	Applikationen/Grafik
-Group(pl):	Aplikacje/Grafika
 URL:		ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
