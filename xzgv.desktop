@@ -2,7 +2,7 @@
 Name=Przegl�darka xzgv
 Name[pl]=Przeglądarka xzgv
 Comment=Image viever with thumbnails 
-Comment[pl]=Przeglądarka obrazków z obsługą thumbnail'i
+Comment[pl]=Przeglądarka obrazków z obsługą thumbnaili
 Icon=
 Exec=xzgv
 Terminal=0
