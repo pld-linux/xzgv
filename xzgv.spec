@@ -1,4 +1,5 @@
 Summary:	picture viewer for X, with thumbnail-based file selector
+Summary(pl):	Przegl±darka plików graficznych pod X'y z obs³ug± thumbnail'i
 Name:		xzgv
 Version:	0.3
 Release:	1
@@ -24,6 +25,14 @@ used are compatible with xv, zgv, and the Gimp. It can also be used with
 `xzgv file(s)', to effectively bypass the file selector. For more on how
 xzgv works and how to use it, do `info xzgv' or `man xzgv' once it's
 installed.
+
+%description -l pl
+xzgv jest przegl±dark± plików graficznych pod X'y z obs³ug± thumbnail'i.
+U¿ywa GTK+ i Imlib'a. Obs³uguje wiêkszo¶æ formatów, a thumbnail'e s±
+kompatybilne z xv, zgv, oraz Gimp. Mo¿e byæ tak¿e u¿ywane z `xzgv file(s)', 
+aby efektywnie pomin±æ wbudowany selektor plików. Wiêcej informacji jak
+dzia³aj± te programy i jak ich u¿ywaæ uzyskasz ze stron manuali: 
+`info xzgv' oraz `man xzgv'. Oczywi¶cie po instalacji.
 
 %prep
 %setup -q
