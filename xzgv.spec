@@ -32,7 +32,7 @@ installed.
 
 %build
 LDFLAGS="-s" ; export LDFLAGS 
-make OPT="$RPM_OPT_FLAGS" PREFIX=%{_prefix}
+%{__make} OPT="$RPM_OPT_FLAGS" PREFIX=%{_prefix}
 
 (cd doc; rm -f *.gz; makeinfo xzgv.texi; gzip -9nf xzgv.info*)
 
@@ -40,7 +40,7 @@ make OPT="$RPM_OPT_FLAGS" PREFIX=%{_prefix}
 rm -fr $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_infodir},%{_mandir}/man1}
 
-make install PREFIX=$RPM_BUILD_ROOT%{_prefix} \
+%{__make} install PREFIX=$RPM_BUILD_ROOT%{_prefix} \
 	INFODIR=$RPM_BUILD_ROOT%{_infodir}
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_bindir}/*
