@@ -1,11 +1,10 @@
 [Desktop Entry]
-Name=Przegl±darka xzgv
-Name[pl]=PrzeglÄ…darka xzgv
-Comment=Image viever with thumbnails 
-Comment[pl]=PrzeglÄ…darka obrazkÃ³w z obsÅ‚ugÄ… thumbnaili
-Icon=
+Name=xzgv viewer
+Name[pl]=Przeg±larka xzgv
+Comment=Image viewer with thumbnails
+Comment[pl]=Przegl±darka obrazków z obs³ug± thumbnaili
+Icon=gnome-eyes.png
 Exec=xzgv
 Terminal=0
 Type=Application
 
-# vi: encoding=utf-8
