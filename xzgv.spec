@@ -47,7 +47,6 @@ LDFLAGS="%{rpmldflags}" ; export LDFLAGS
 cd doc
 rm -f *.gz
 makeinfo xzgv.texi
-gzip -9nf xzgv.info*
 cd ..
 
 %install
