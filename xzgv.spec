@@ -9,9 +9,7 @@ Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
 URL:		ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/%{name}-%{version}.tar.gz
-Patch0:		%{name}-config.patch
-Patch1:		%{name}-info.patch
-Patch2:		%{name}-patch
+Patch0:		%{name}-patch
 BuildRequires:	gtk+-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -37,9 +35,7 @@ dzia³aj± te programy i jak ich u¿ywaæ uzyskasz ze stron manuali:
 
 %prep
 %setup -q
-#%patch0 -p1
-#%patch1 -p1
-%patch2 -p1
+%patch0 -p1
 
 %build
 LDFLAGS="-s" ; export LDFLAGS 
