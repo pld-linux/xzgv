@@ -8,6 +8,7 @@ Vendor:		Russell Marks <russell.marks@dtn.ntl.com>
 Group:		X11/Applications/Graphics
 URL:		ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/%{name}-%{version}.tar.gz
+# Source0-md5:	37b5bd8286de9f1047f603879460b364
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-patch
