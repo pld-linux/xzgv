@@ -54,14 +54,14 @@ makeinfo xzgv.texi
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_infodir},%{_mandir}/man1} \
-	$RPM_BUILD_ROOT{%{_applnkdir}/Graphics/Viewers,%{_pixmapsdir}}
+	$RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
 	PREFIX=$RPM_BUILD_ROOT%{_prefix} \
 	INFODIR=$RPM_BUILD_ROOT%{_infodir} \
 	MANDIR=$RPM_BUILD_ROOT%{_mandir}/man1
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %clean
@@ -79,5 +79,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/xzgv
 %{_infodir}/xzgv*
 %{_mandir}/man1/*
-%{_applnkdir}/Graphics/Viewers/*
+%{_desktopdir}/*
 %{_pixmapsdir}/*
