@@ -44,8 +44,8 @@
  @direntry
 -* xzgv: (xzgv). A picture viewer for X, with a thumbnail-based file
 -                selector.
-+xzgv: (xzgv).                                A picture viewer for X, with
-+                                       a thumbnail-based file selector
++xzgv: (xzgv).				A picture viewer for X, with
++					a thumbnail-based file selector
  @end direntry
  @end ifinfo
  
