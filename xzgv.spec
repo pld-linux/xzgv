@@ -1,4 +1,4 @@
-Summary:	picture viewer for X, with thumbnail-based file selector.
+Summary:	picture viewer for X, with thumbnail-based file selector
 Name:		xzgv
 Version:	0.3
 Release:	1
@@ -7,8 +7,9 @@ Vendor:		Russell Marks <russell.marks@dtn.ntl.com>
 Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
 URL:		ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/
-Source:		ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/%{name}-%{version}.tar.gz
-Patch:		xzgv-config.patch
+Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/X/%{name}-%{version}.tar.gz
+Patch0:		xzgv-config.patch
+Patch1:		xzgv-info.patch
 BuildRequires:	gtk+-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -26,13 +27,17 @@ installed.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 LDFLAGS="-s" ; export LDFLAGS 
 make OPT="$RPM_OPT_FLAGS" PREFIX=%{_prefix}
 
+(cd doc; rm -f *.gz; makeinfo xzgv.texi; gzip -9nf xzgv.info*)
+
 %install
+rm -fr $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_infodir},%{_mandir}/man1}
 
 make install PREFIX=$RPM_BUILD_ROOT%{_prefix} \
@@ -40,7 +45,7 @@ make install PREFIX=$RPM_BUILD_ROOT%{_prefix} \
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_bindir}/*
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/xzgv.1 \
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	AUTHORS ChangeLog NEWS README TODO
 
 %post
@@ -56,8 +61,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {AUTHORS,ChangeLog,NEWS,README,TODO}.gz
 %attr(755,root,root) %{_bindir}/xzgv
-%{_infodir}/xzgv.gz
-%{_infodir}/xzgv-1.gz
-%{_infodir}/xzgv-2.gz
-%{_infodir}/xzgv-3.gz
-%{_mandir}/man1/xzgv.1.gz
+%{_infodir}/xzgv*.gz
+%{_mandir}/man1/*
