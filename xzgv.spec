@@ -2,7 +2,7 @@ Summary:	Picture viewer for X, with thumbnail-based file selector
 Summary(pl):	Przegl±darka plików graficznych pod X Window System z obs³ug± miniatur
 Name:		xzgv
 Version:	0.8
-Release:	4
+Release:	5
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://xzgv.browser.org/%{name}-%{version}.tar.gz
@@ -12,6 +12,7 @@ Source2:	%{name}.png
 Patch0:		%{name}-patch
 # http://rus.members.beeb.net/xzgv-0.8-integer-overflow-fix.diff
 Patch1:		%{name}-CAN-2004-0994.patch
+Patch2:		%{name}-patched-cmyk-ycck-fix.patch
 URL:		http://xzgv.browser.org/
 BuildRequires:	gawk
 BuildRequires:	gtk+-devel
@@ -32,16 +33,18 @@ xzgv' once it's installed.
 
 %description -l pl
 xzgv jest przegl±dark± plików graficznych pod X Window System z
-obs³ug± miniatur. U¿ywa GTK+ i Imliba. Obs³uguje wiêkszo¶æ formatów,
-a miniatury s± zgodne z xv, zgv oraz Gimpem. Mo¿e byæ tak¿e u¿ywany
-jako `xzgv plik(i)' w celu efektywnego pominiêcia wbudowanego okna
-wyboru plików. Wiêcej informacji jak dzia³a ten program i jak go
-u¿ywaæ mo¿na znale¼æ na stronach podrêcznika: `info xzgv' oraz `man
-xzgv'. Oczywi¶cie po instalacji.
+obs³ug± miniatur. U¿ywa GTK+ i Imliba. Obs³uguje wiêkszo¶æ formatów, a
+miniatury s± zgodne z xv, zgv oraz Gimpem. Mo¿e byæ tak¿e u¿ywany jako
+`xzgv plik(i)' w celu efektywnego pominiêcia wbudowanego okna wyboru
+plików. Wiêcej informacji jak dzia³a ten program i jak go u¿ywaæ mo¿na
+znale¼æ na stronach podrêcznika: `info xzgv' oraz `man xzgv'.
+Oczywi¶cie po instalacji.
 
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 %{__make} \
