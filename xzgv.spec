@@ -1,5 +1,5 @@
 Summary:	Picture viewer for X, with thumbnail-based file selector
-Summary(pl.UTF-8):   Przeglądarka plików graficznych pod X Window System z obsługą miniatur
+Summary(pl.UTF-8):	Przeglądarka plików graficznych pod X Window System z obsługą miniatur
 Name:		xzgv
 Version:	0.8
 Release:	5
