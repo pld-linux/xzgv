@@ -1,5 +1,5 @@
 Summary:	Picture viewer for X, with thumbnail-based file selector
-Summary(pl):	Przegl±darka plików graficznych pod X Window System z obs³ug± miniatur
+Summary(pl.UTF-8):   PrzeglÄ…darka plikÃ³w graficznych pod X Window System z obsÅ‚ugÄ… miniatur
 Name:		xzgv
 Version:	0.8
 Release:	5
@@ -31,14 +31,14 @@ be used with `xzgv file(s)', to effectively bypass the file selector.
 For more on how xzgv works and how to use it, do `info xzgv' or `man
 xzgv' once it's installed.
 
-%description -l pl
-xzgv jest przegl±dark± plików graficznych pod X Window System z
-obs³ug± miniatur. U¿ywa GTK+ i Imliba. Obs³uguje wiêkszo¶æ formatów, a
-miniatury s± zgodne z xv, zgv oraz Gimpem. Mo¿e byæ tak¿e u¿ywany jako
-`xzgv plik(i)' w celu efektywnego pominiêcia wbudowanego okna wyboru
-plików. Wiêcej informacji jak dzia³a ten program i jak go u¿ywaæ mo¿na
-znale¼æ na stronach podrêcznika: `info xzgv' oraz `man xzgv'.
-Oczywi¶cie po instalacji.
+%description -l pl.UTF-8
+xzgv jest przeglÄ…darkÄ… plikÃ³w graficznych pod X Window System z
+obsÅ‚ugÄ… miniatur. UÅ¼ywa GTK+ i Imliba. ObsÅ‚uguje wiÄ™kszoÅ›Ä‡ formatÃ³w, a
+miniatury sÄ… zgodne z xv, zgv oraz Gimpem. MoÅ¼e byÄ‡ takÅ¼e uÅ¼ywany jako
+`xzgv plik(i)' w celu efektywnego pominiÄ™cia wbudowanego okna wyboru
+plikÃ³w. WiÄ™cej informacji jak dziaÅ‚a ten program i jak go uÅ¼ywaÄ‡ moÅ¼na
+znaleÅºÄ‡ na stronach podrÄ™cznika: `info xzgv' oraz `man xzgv'.
+OczywiÅ›cie po instalacji.
 
 %prep
 %setup -q
