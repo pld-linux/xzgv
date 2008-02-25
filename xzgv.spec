@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Przeglądarka plików graficznych pod X Window System z obsł
 Name:		xzgv
 Version:	0.9
 Release:	1
-License:	GPL
+License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://dl.sourceforge.net/xzgv/%{name}-%{version}.tar.gz
 # Source0-md5:	7e2dfad595c97c2abbb392b61ea69f1b
@@ -12,8 +12,8 @@ Source2:	%{name}.png
 Patch0:		%{name}-patch
 URL:		http://sourceforge.net/projects/xzgv
 BuildRequires:	gawk
-BuildRequires:	gdk-pixbuf-devel
-BuildRequires:	gtk+2-devel
+BuildRequires:	gtk+2-devel >= 1:2.0
+BuildRequires:	pkgconfig
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -40,6 +40,7 @@ Oczywiście po instalacji.
 
 %build
 %{__make} \
+	CC="%{__cc}" \
 	PREFIX=%{_prefix} \
 	OPT="%{rpmcflags}" \
 	LDFLAGS="%{rpmldflags}"
@@ -64,17 +65,17 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p	/sbin/postshell
+%post	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun	-p	/sbin/postshell
+%postun	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/xzgv
-%{_infodir}/xzgv*
-%{_mandir}/man1/*
-%{_desktopdir}/*.desktop
-%{_pixmapsdir}/*
+%{_infodir}/xzgv.info*
+%{_mandir}/man1/xzgv.1*
+%{_desktopdir}/xzgv.desktop
+%{_pixmapsdir}/xzgv.png
