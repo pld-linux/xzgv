@@ -1,25 +1,19 @@
 Summary:	Picture viewer for X, with thumbnail-based file selector
 Summary(pl.UTF-8):	Przeglądarka plików graficznych pod X Window System z obsługą miniatur
 Name:		xzgv
-Version:	0.8
-Release:	5
+Version:	0.9
+Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
-Source0:	http://xzgv.browser.org/%{name}-%{version}.tar.gz
-# Source0-md5:	e392277f1447076402df2e3d9e782cb2
+Source0:	http://dl.sourceforge.net/xzgv/%{name}-%{version}.tar.gz
+# Source0-md5:	7e2dfad595c97c2abbb392b61ea69f1b
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-patch
-# http://rus.members.beeb.net/xzgv-0.8-integer-overflow-fix.diff
-Patch1:		%{name}-CAN-2004-0994.patch
-Patch2:		%{name}-patched-cmyk-ycck-fix.patch
-URL:		http://xzgv.browser.org/
+URL:		http://sourceforge.net/projects/xzgv
 BuildRequires:	gawk
-BuildRequires:	gtk+-devel
-BuildRequires:	imlib-devel
-BuildRequires:	libjpeg-devel
-BuildRequires:	libpng-devel
-BuildRequires:	libtiff-devel
+BuildRequires:	gdk-pixbuf-devel
+BuildRequires:	gtk+2-devel
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,8 +37,6 @@ Oczywiście po instalacji.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 %{__make} \
