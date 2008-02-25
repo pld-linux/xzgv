@@ -1,30 +1,15 @@
 --- xzgv-0.7/doc/Makefile.orig	Tue Apr 24 16:09:04 2001
 +++ xzgv-0.7/doc/Makefile	Tue Apr 24 16:13:00 2001
-@@ -38,23 +38,8 @@
+@@ -38,8 +38,7 @@
  
- install: ../src/install-info installdirs
+ install: installdirs
  	install xzgv.1 $(MANDIR)
--	install xzgv.gz xzgv-?.gz $(INFODIR)
+-	install xzgv.gz $(INFODIR)
+-	install-info  --infodir=$(INFODIR) xzgv.gz
 +	install xzgv.info* $(INFODIR)
- 	chmod 644 $(MANDIR)/xzgv.1 $(INFODIR)/xzgv*
--# Update info `dir' file.
--# Info always uses a dir file in preference to a dir.gz, so we don't use
--# dir.gz unless it's the only game in town.
--	if [ "$(INFO_DIR_UPDATE)" != no ]; then \
--	  gzip -d xzgv.gz; \
--	  if [ -f $(INFODIR)/dir.gz -a ! -f $(INFODIR)/dir ]; then \
--	    gzip -d $(INFODIR)/dir.gz; \
--	    ../src/install-info xzgv $(INFODIR)/dir; \
--	    gzip $(INFODIR)/dir; \
--	  else \
--	    ../src/install-info xzgv $(INFODIR)/dir; \
--	  fi; \
--	  chmod a+r $(INFODIR)/dir; \
--	  gzip xzgv; \
--	fi
  
- ../src/install-info: ../src/install-info.c
- 	cd ../src && $(MAKE) install-info
+ uninstall:
+ 	$(RM) $(MANDIR)/xzgv.1
 --- xzgv-0.7/doc/xzgv.texi.orig	Tue Apr 24 16:13:38 2001
 +++ xzgv-0.7/doc/xzgv.texi	Tue Apr 24 16:15:12 2001
 @@ -1,6 +1,6 @@
@@ -60,12 +45,23 @@
  
  # Set the awk interpreter to use for a script used while compiling.
  # (This should be a `new' awk, such as gawk or mawk.)
-@@ -27,7 +27,7 @@
- # On non-x86-based machines (e.g. Alpha, Sparc, PPC), you should
- # comment it out.
- #
--CFLAGS+=-DINTERP_MMX
-+#CFLAGS+=-DINTERP_MMX
+--- xzgv-0.9/src/Makefile~	2007-08-14 00:39:16.000000000 +0200
++++ xzgv-0.9/src/Makefile	2008-02-25 15:10:32.000000000 +0100
+@@ -10,7 +10,7 @@
+ include ../config.mk
  
- # Set rendering backend to use. Currently only Imlib 1.x is properly
- # supported, so leave this alone. :-)
+ CFLAGS+=`pkg-config --cflags gtk+-2.0` `pkg-config --cflags gdk-pixbuf-2.0`
+-LDFLAGS+=`pkg-config --libs gtk+-2.0` `pkg-config --libs gdk-pixbuf-2.0`
++LIBS+=`pkg-config --libs gtk+-2.0` `pkg-config --libs gdk-pixbuf-2.0`
+ 
+ all: xzgv
+ 
+@@ -23,7 +23,7 @@
+ 	backend.o
+ 
+ xzgv: $(OBJS)
+-	$(CC) $(LDFLAGS) -o xzgv $(OBJS)
++	$(CC) $(LDFLAGS) -o xzgv $(OBJS) $(LIBS)
+ 
+ installdirs:
+ 	/bin/sh ../mkinstalldirs $(BINDIR)
