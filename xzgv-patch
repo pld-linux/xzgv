@@ -1,41 +1,6 @@
---- xzgv-0.7/doc/Makefile.orig	Tue Apr 24 16:09:04 2001
-+++ xzgv-0.7/doc/Makefile	Tue Apr 24 16:13:00 2001
-@@ -38,8 +38,7 @@
- 
- install: installdirs
- 	install xzgv.1 $(MANDIR)
--	install xzgv.gz $(INFODIR)
--	install-info  --infodir=$(INFODIR) xzgv.gz
-+	install xzgv.info* $(INFODIR)
- 
- uninstall:
- 	$(RM) $(MANDIR)/xzgv.1
---- xzgv-0.7/doc/xzgv.texi.orig	Tue Apr 24 16:13:38 2001
-+++ xzgv-0.7/doc/xzgv.texi	Tue Apr 24 16:15:12 2001
-@@ -1,6 +1,6 @@
- \input texinfo   @c -*-texinfo-*-
- @c %**start of header
--@setfilename xzgv
-+@setfilename xzgv.info
- @settitle The xzgv manual
- @setchapternewpage odd
- @c %**end of header
-@@ -23,10 +23,10 @@
- @c This is `ifinfo' to stop texi2{html,roff} seeing it, as they don't
- @c handle it.
- @ifinfo
--@dircategory Graphics Utilities
-+@dircategory Graphics Utilities:
- @direntry
--* xzgv: (xzgv). A picture viewer for X, with a thumbnail-based file
--                selector.
-+xzgv: (xzgv).				A picture viewer for X, with
-+					a thumbnail-based file selector
- @end direntry
- @end ifinfo
- 
---- xzgv-0.7/config.mk.orig	Tue Apr 24 16:02:43 2001
-+++ xzgv-0.7/config.mk	Tue Apr 24 16:06:18 2001
+diff -ruN xzgv-0.9.1.orig/config.mk xzgv-0.9.1/config.mk
+--- xzgv-0.9.1.orig/config.mk	2007-08-12 12:14:42.000000000 +0200
++++ xzgv-0.9.1/config.mk	2010-02-24 12:43:36.946478342 +0100
 @@ -7,7 +7,7 @@
  # This is likely to be what you'll want for most systems:
  #
@@ -45,8 +10,34 @@
  
  # Set the awk interpreter to use for a script used while compiling.
  # (This should be a `new' awk, such as gawk or mawk.)
---- xzgv-0.9/src/Makefile~	2007-08-14 00:39:16.000000000 +0200
-+++ xzgv-0.9/src/Makefile	2008-02-25 15:10:32.000000000 +0100
+diff -ruN xzgv-0.9.1.orig/doc/Makefile xzgv-0.9.1/doc/Makefile
+--- xzgv-0.9.1.orig/doc/Makefile	2007-12-23 21:49:03.000000000 +0100
++++ xzgv-0.9.1/doc/Makefile	2010-02-24 12:44:02.742473730 +0100
+@@ -38,8 +38,7 @@
+ 
+ install: installdirs
+ 	install xzgv.1 $(MANDIR)
+-	install -m 644 xzgv.info.gz $(INFODIR)
+-	install-info --infodir=$(INFODIR) xzgv.info.gz
++	install xzgv.info* $(INFODIR)
+ 
+ uninstall:
+ 	$(RM) $(MANDIR)/xzgv.1
+diff -ruN xzgv-0.9.1.orig/doc/xzgv.texi xzgv-0.9.1/doc/xzgv.texi
+--- xzgv-0.9.1.orig/doc/xzgv.texi	2007-12-23 21:42:16.000000000 +0100
++++ xzgv-0.9.1/doc/xzgv.texi	2010-02-24 12:43:36.947477809 +0100
+@@ -23,7 +23,7 @@
+ @c This is `ifinfo' to stop texi2{html,roff} seeing it, as they don't
+ @c handle it.
+ @ifinfo
+-@dircategory Graphics Utilities
++@dircategory Graphics Utilities:
+ @direntry
+ * xzgv: (xzgv). A picture viewer for X, with a thumbnail-based file
+                 selector.
+diff -ruN xzgv-0.9.1.orig/src/Makefile xzgv-0.9.1/src/Makefile
+--- xzgv-0.9.1.orig/src/Makefile	2007-12-23 21:47:25.000000000 +0100
++++ xzgv-0.9.1/src/Makefile	2010-02-24 12:43:36.948477881 +0100
 @@ -10,7 +10,7 @@
  include ../config.mk
  
