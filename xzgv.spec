@@ -1,12 +1,12 @@
 Summary:	Picture viewer for X, with thumbnail-based file selector
 Summary(pl.UTF-8):	Przeglądarka plików graficznych pod X Window System z obsługą miniatur
 Name:		xzgv
-Version:	0.9.1
+Version:	0.9.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
-Source0:	http://dl.sourceforge.net/xzgv/%{name}-%{version}.tar.gz
-# Source0-md5:	d6452ebd4911d986fa1176086afb6e33
+Source0:	http://dl.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	87d14e59268ace5ba83005a6e20e2be7
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-patch

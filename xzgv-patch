@@ -1,6 +1,6 @@
-diff -ruN xzgv-0.9.1.orig/config.mk xzgv-0.9.1/config.mk
---- xzgv-0.9.1.orig/config.mk	2007-08-12 12:14:42.000000000 +0200
-+++ xzgv-0.9.1/config.mk	2010-02-24 12:43:36.946478342 +0100
+diff -ruN xzgv-0.9.2.orig/config.mk xzgv-0.9.2/config.mk
+--- xzgv-0.9.2.orig/config.mk	2017-09-03 12:11:50.000000000 +0200
++++ xzgv-0.9.2/config.mk	2017-09-23 03:15:42.296903260 +0200
 @@ -7,7 +7,7 @@
  # This is likely to be what you'll want for most systems:
  #
@@ -10,10 +10,18 @@ diff -ruN xzgv-0.9.1.orig/config.mk xzgv-0.9.1/config.mk
  
  # Set the awk interpreter to use for a script used while compiling.
  # (This should be a `new' awk, such as gawk or mawk.)
-diff -ruN xzgv-0.9.1.orig/doc/Makefile xzgv-0.9.1/doc/Makefile
---- xzgv-0.9.1.orig/doc/Makefile	2007-12-23 21:49:03.000000000 +0100
-+++ xzgv-0.9.1/doc/Makefile	2010-02-24 12:44:02.742473730 +0100
-@@ -38,8 +38,7 @@
+@@ -29,7 +29,6 @@
+ INFODIR=$(PREFIX)/share/info
+ MANDIR=$(PREFIX)/share/man/man1
+ DESKTOPDIR1=$(PREFIX)/share/applications
+-DESKTOPDIR2=$(PREFIX)/share/app-install/desktop
+ PIXMAPDIR=$(PREFIX)/share/pixmaps
+ 
+ # -------------------- Miscellaneous options -----------------------
+diff -ruN xzgv-0.9.2.orig/doc/Makefile xzgv-0.9.2/doc/Makefile
+--- xzgv-0.9.2.orig/doc/Makefile	2017-09-03 12:11:50.000000000 +0200
++++ xzgv-0.9.2/doc/Makefile	2017-09-23 03:09:21.023374360 +0200
+@@ -34,8 +34,7 @@
  
  install: installdirs
  	install xzgv.1 $(MANDIR)
@@ -23,9 +31,9 @@ diff -ruN xzgv-0.9.1.orig/doc/Makefile xzgv-0.9.1/doc/Makefile
  
  uninstall:
  	$(RM) $(MANDIR)/xzgv.1
-diff -ruN xzgv-0.9.1.orig/doc/xzgv.texi xzgv-0.9.1/doc/xzgv.texi
---- xzgv-0.9.1.orig/doc/xzgv.texi	2007-12-23 21:42:16.000000000 +0100
-+++ xzgv-0.9.1/doc/xzgv.texi	2010-02-24 12:43:36.947477809 +0100
+diff -ruN xzgv-0.9.2.orig/doc/xzgv.texi xzgv-0.9.2/doc/xzgv.texi
+--- xzgv-0.9.2.orig/doc/xzgv.texi	2017-09-03 12:11:50.000000000 +0200
++++ xzgv-0.9.2/doc/xzgv.texi	2017-09-23 03:09:39.176301828 +0200
 @@ -23,7 +23,7 @@
  @c This is `ifinfo' to stop texi2{html,roff} seeing it, as they don't
  @c handle it.
@@ -35,24 +43,41 @@ diff -ruN xzgv-0.9.1.orig/doc/xzgv.texi xzgv-0.9.1/doc/xzgv.texi
  @direntry
  * xzgv: (xzgv). A picture viewer for X, with a thumbnail-based file
                  selector.
-diff -ruN xzgv-0.9.1.orig/src/Makefile xzgv-0.9.1/src/Makefile
---- xzgv-0.9.1.orig/src/Makefile	2007-12-23 21:47:25.000000000 +0100
-+++ xzgv-0.9.1/src/Makefile	2010-02-24 12:43:36.948477881 +0100
-@@ -10,7 +10,7 @@
- include ../config.mk
+diff -ruN xzgv-0.9.2.orig/src/Makefile xzgv-0.9.2/src/Makefile
+--- xzgv-0.9.2.orig/src/Makefile	2017-09-03 12:11:50.000000000 +0200
++++ xzgv-0.9.2/src/Makefile	2017-09-23 03:16:00.064831633 +0200
+@@ -11,7 +11,7 @@
  
- CFLAGS+=`pkg-config --cflags gtk+-2.0` `pkg-config --cflags gdk-pixbuf-2.0`
--LDFLAGS+=`pkg-config --libs gtk+-2.0` `pkg-config --libs gdk-pixbuf-2.0`
-+LIBS+=`pkg-config --libs gtk+-2.0` `pkg-config --libs gdk-pixbuf-2.0`
+ CFLAGS+=`pkg-config --cflags gtk+-2.0` `pkg-config --cflags gdk-pixbuf-2.0` \
+ 	`pkg-config --cflags x11` `pkg-config --cflags libexif`
+-LDFLAGS+=`pkg-config --libs gtk+-2.0` `pkg-config --libs gdk-pixbuf-2.0` \
++LIBS+=`pkg-config --libs gtk+-2.0` `pkg-config --libs gdk-pixbuf-2.0` \
+ 	`pkg-config --libs x11` `pkg-config --libs libexif` -lm
  
  all: xzgv
- 
-@@ -23,7 +23,7 @@
+@@ -25,7 +25,7 @@
  	backend.o
  
  xzgv: $(OBJS)
--	$(CC) $(LDFLAGS) -o xzgv $(OBJS)
-+	$(CC) $(LDFLAGS) -o xzgv $(OBJS) $(LIBS)
+-	$(CC) -o xzgv $(OBJS) $(LDFLAGS)
++	$(CC) -o xzgv $(OBJS) $(LIBS)
  
  installdirs:
  	/bin/sh ../mkinstalldirs $(BINDIR)
+@@ -34,16 +34,13 @@
+ 	install xzgv $(BINDIR)
+ 	chmod 755 $(BINDIR)/xzgv
+ 	install xzgv.desktop $(DESKTOPDIR1)
+-	install xzgv.desktop $(DESKTOPDIR2)
+ 	install icon-64.xpm $(PIXMAPDIR)/xzgv.xpm
+ 	chmod 644 $(DESKTOPDIR1)/xzgv.desktop
+-	chmod 644 $(DESKTOPDIR2)/xzgv.desktop
+ 	chmod 644 $(PIXMAPDIR)/xzgv.xpm
+ 
+ uninstall:
+ 	$(RM) $(BINDIR)/xzgv
+ 	$(RM) $(DESKTOPDIR1)/xzgv.desktop
+-	$(RM) $(DESKTOPDIR2)/xzgv.desktop
+ 	$(RM) $(PIXMAPDIR)/xzgv.xpm
+ 
+ clean:
