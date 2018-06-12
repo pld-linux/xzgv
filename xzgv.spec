@@ -2,7 +2,7 @@ Summary:	Picture viewer for X, with thumbnail-based file selector
 Summary(pl.UTF-8):	Przeglądarka plików graficznych pod X Window System z obsługą miniatur
 Name:		xzgv
 Version:	0.9.2
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}/%{version}/%{name}-%{version}.tar.gz
@@ -10,6 +10,7 @@ Source0:	http://downloads.sourceforge.net/%{name}/%{name}/%{version}/%{name}-%{v
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-patch
+Patch1:		%{name}-exif_orient.patch
 URL:		http://sourceforge.net/projects/xzgv
 BuildRequires:	gawk
 BuildRequires:	gtk+2-devel >= 1:2.0
@@ -37,6 +38,7 @@ Oczywiście po instalacji.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__make} \
